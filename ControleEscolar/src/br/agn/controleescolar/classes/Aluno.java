@@ -54,13 +54,13 @@ public class Aluno {
 		return somaNotas / disciplinas.size();
 	}
 
-	public String getSituação() {
+	public String getSituacao() {
 		double media = this.getMediaNotas();
 		if (media >= 50) {
 			if (media >= 70) {
 				return "Aprovado";
 			} else {
-				return "Aluno em Recuperação";
+				return "Aluno em Recuperaï¿½ï¿½o";
 			}
 
 		} else {
@@ -72,8 +72,8 @@ public class Aluno {
 	public String toString() {
 		String output = "";
 		output += "Nome: " + this.getNome() + "\n";
-		output += "Média: " + this.getMediaNotas() + "\n";
-		output += "Situação: " + this.getSituação() + "\n";
+		output += "Mï¿½dia: " + this.getMediaNotas() + "\n";
+		output += "Situacao: " + this.getSituacao() + "\n";
 		output += "Disciplinas: " + this.getDisciplinas() + "\n";
 		return output;
 	}
