@@ -3,6 +3,8 @@ package br.agn.controleescolar.classes;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.agn.controleescolar.constantes.Situacao;
+
 public class Aluno {
 	private String nome;
 	private int idade;
@@ -58,13 +60,12 @@ public class Aluno {
 		double media = this.getMediaNotas();
 		if (media >= 50) {
 			if (media >= 70) {
-				return "Aprovado";
+				return Situacao.APROVADO;
 			} else {
-				return "Aluno em Recupera��o";
+				return Situacao.RECUPERACAO;
 			}
-
 		} else {
-			return "Reprovado";
+			return Situacao.REPROVADO;
 		}
 	}
 
@@ -72,7 +73,7 @@ public class Aluno {
 	public String toString() {
 		String output = "";
 		output += "Nome: " + this.getNome() + "\n";
-		output += "M�dia: " + this.getMediaNotas() + "\n";
+		output += "Media: " + this.getMediaNotas() + "\n";
 		output += "Situacao: " + this.getSituacao() + "\n";
 		output += "Disciplinas: " + this.getDisciplinas() + "\n";
 		return output;

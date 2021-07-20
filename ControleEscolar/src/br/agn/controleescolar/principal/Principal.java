@@ -7,12 +7,16 @@ import javax.swing.JOptionPane;
 
 import br.agn.controleescolar.classes.Aluno;
 import br.agn.controleescolar.classes.Disciplina;
+import br.agn.controleescolar.constantes.Situacao;
 
 public class Principal {
 	public static void main(String[] args) {
 		List<Aluno> alunos = new ArrayList<>();
+		List<Aluno> alunosAprovados = new ArrayList<>();
+		List<Aluno> alunosRecuperacao = new ArrayList<>();
+		List<Aluno> alunosReprovados = new ArrayList<>();
 
-		for (int qtd = 1; qtd <= 2; qtd++) {
+		for (int qtd = 1; qtd <= 6; qtd++) {
 
 			String nome = JOptionPane.showInputDialog("Nome do aluno " + qtd + " ");
 			String idade = JOptionPane.showInputDialog("Idade: ");
@@ -22,7 +26,7 @@ public class Principal {
 			aluno.setNome(nome);
 			aluno.setIdade(Integer.valueOf(idade));
 
-			for (int pos = 1; pos <= 4; pos++) {
+			for (int pos = 1; pos <= 1; pos++) {
 				String nomeDis = JOptionPane.showInputDialog("Nome da disciplina " + pos + " ?");
 				String nota = JOptionPane.showInputDialog("Nota da disciplina " + pos + " ?");
 				Disciplina disciplina = new Disciplina();
@@ -36,7 +40,7 @@ public class Principal {
 
 			int escolha = JOptionPane.showConfirmDialog(null, "Deseja remover alguma disciplina? ");
 
-			if (escolha == 0) { // Opçao sim = 0
+			if (escolha == 0) { // Opï¿½ao sim = 0
 
 				int continuaRemovendo = 0;
 				int posicao = 1;
@@ -50,7 +54,50 @@ public class Principal {
 			}
 			alunos.add(aluno);
 		}
-		for (Aluno a : alunos) {
+		/*//PECORRENDO LISTAS POR POSICAO
+		for (int pos = 0; pos < alunos.size(); pos++) {
+			Aluno aluno = alunos.get(pos);
+			//SUBSTITUIR ALUNO NA LISTA
+			if (aluno.getNome().equals("Alaniel")) {
+				Aluno trocar = new Aluno();
+				trocar.setNome("Aluno foi trocado");
+				
+				Disciplina disciplina = new Disciplina();
+				disciplina.setDisciplina("TCC I");
+				disciplina.setNota(100);
+				
+				trocar.getDisciplinas().add(disciplina);
+				
+				alunos.set(pos, trocar);
+				aluno = alunos.get(pos);
+			}
+			System.out.println("Aluno: " + aluno.getNome());
+			System.out.println("-----------------------------------------------------------------------");
+			
+			
+		}*/
+		//for (Aluno a : alunos) {
+			//System.out.println(a);
+		//}
+		for (Aluno a1 : alunos) {
+			if(a1.getSituacao().equals(Situacao.APROVADO)) {
+				alunosAprovados.add(a1);
+			}else if(a1.getSituacao().equals(Situacao.RECUPERACAO)) {
+				alunosRecuperacao.add(a1);
+			}else {
+				alunosReprovados.add(a1);
+			}
+		}
+		System.out.println("-------------------Lista dos Aprovados--------------------");
+		for (Aluno a : alunosAprovados) {
+			System.out.println(a);
+		}
+		System.out.println("-------------------Lista dos em Recuperacao--------------------");
+		for (Aluno a : alunosRecuperacao) {
+			System.out.println(a);
+		}
+		System.out.println("-------------------Lista dos Reprovados--------------------");
+		for (Aluno a : alunosReprovados) {
 			System.out.println(a);
 		}
 	}
